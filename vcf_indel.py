@@ -11,15 +11,15 @@ import os
 from itertools import islice
 
 lista = list()
-chromosome = 1
+chromosome = 19
 
 
-while chromosome <2:
+while chromosome <21:
 
     print "solving problems on chromosome %d" %(chromosome)
     
     #os.system("grep \"WARNING\" /home/roberto/Software/snpEff/chr%s/snpEff_ann.vcf | awk -F\"\t\" '{print $3}' > tmp" %(chromosome))
-    VCFs = "/home/DB/M.esculenta/VCF_V6/correct_VCF/chr%d_correct.vcf" %(chromosome)
+    VCFs = "/home/DB/M.esculenta/VCF_V6/chr%d/chr%d_filt.vcf.recode.vcf" %(chromosome, chromosome)
     
     
     with open(VCFs) as f:
@@ -32,7 +32,7 @@ while chromosome <2:
         
         for line in f:
             a = line.split()  
-            if a[3] == a[4]:              
+            if a[4] == "-":              
                                 
                 parta = a[0]+"\t"+str(int(a[1])-1)+"\t"+a[2]
                                                             
@@ -49,7 +49,7 @@ while chromosome <2:
                 
                 print log
             
-            if a[3] == "-":              
+            elif a[3] == "-":              
                                 
                 parta = a[0]+"\t"+str(int(a[1])-2)+"\t"+a[2]
                                                             
